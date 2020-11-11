@@ -270,14 +270,15 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     for (int i = 0; i < barData.showingIndicators.length; i++) {
       final TouchedSpotIndicatorData indicatorData = indicatorsData[i];
       final int index = barData.showingIndicators[i];
-      final FlSpot spot = barData.spots[index];
+      if (index <= barData.spots.length - 1){
+        final FlSpot spot = barData.spots[index];
 
       if (indicatorData == null) {
         continue;
       }
 
       final Offset touchedSpot =
-          Offset(getPixelX(spot.x, chartViewSize), getPixelY(spot.y, chartViewSize));
+      Offset(getPixelX(spot.x, chartViewSize), getPixelY(spot.y, chartViewSize));
 
       /// For drawing the dot
       final bool showingDots =
@@ -290,7 +291,9 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
             ((touchedSpot.dx - getLeftOffsetDrawSize()) / barXDelta) * 100;
         drawer =
             indicatorData.touchedSpotDotData.getDotPainter(spot, xPercentInLine, barData, index);
-        dotHeight = drawer.getSize(spot).height;
+        dotHeight = drawer
+            .getSize(spot)
+            .height;
       }
 
       /// For drawing the indicator line
@@ -299,7 +302,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
       /// Draw to top or to the touchedSpot
       final Offset lineEnd =
-          data.lineTouchData.fullHeightTouchLine ? top : touchedSpot + Offset(0, dotHeight / 2);
+      data.lineTouchData.fullHeightTouchLine ? top : touchedSpot + Offset(0, dotHeight / 2);
 
       _touchLinePaint.color = indicatorData.indicatorBelowLine.color;
       _touchLinePaint.strokeWidth = indicatorData.indicatorBelowLine.strokeWidth;
@@ -311,6 +314,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       if (showingDots) {
         drawer.draw(canvas, spot, touchedSpot);
       }
+    }
     }
   }
 
