@@ -207,10 +207,10 @@ class _LineChartState extends AnimatedWidgetBaseState<LineChart> {
         _showingTouchedTooltips.add(ShowingTooltipIndicators(0, sortedLineSpots));
       });
     } else {
-      setState(() {
-        _showingTouchedTooltips.clear();
-        _showingTouchedIndicators.clear();
-      });
+//       setState(() {
+//         _showingTouchedTooltips.clear();
+//         _showingTouchedIndicators.clear();
+//       });
     }
   }
 
