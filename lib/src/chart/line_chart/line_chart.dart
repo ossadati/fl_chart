@@ -11,6 +11,14 @@ import 'line_chart_painter.dart';
 class LineChart extends ImplicitlyAnimatedWidget {
   /// Determines how the [LineChart] should be look like.
   final LineChartData data;
+  
+  
+   static void cleanTooltipsList (){
+    if(_showingTouchedTooltips != null && _showingTouchedIndicators !=null)
+  _showingTouchedTooltips.clear();
+  _showingTouchedIndicators.clear();
+  
+  }
 
   /// [data] determines how the [LineChart] should be look like,
   /// when you make any change in the [LineChartData], it updates
@@ -215,12 +223,7 @@ class _LineChartState extends AnimatedWidgetBaseState<LineChart> {
   }
   
   
-  static void cleanTooltipsList (){
-    if(_showingTouchedTooltips != null && _showingTouchedIndicators !=null)
-  _showingTouchedTooltips.clear();
-  _showingTouchedIndicators.clear();
-  
-  }
+ 
 
   @override
   void forEachTween(visitor) {
