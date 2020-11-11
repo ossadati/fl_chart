@@ -213,6 +213,14 @@ class _LineChartState extends AnimatedWidgetBaseState<LineChart> {
 //       });
     }
   }
+  
+  
+  static void cleanTooltipsList (){
+    if(_showingTouchedTooltips != null && _showingTouchedIndicators !=null)
+  _showingTouchedTooltips.clear();
+  _showingTouchedIndicators.clear();
+  
+  }
 
   @override
   void forEachTween(visitor) {
