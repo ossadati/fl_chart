@@ -13,12 +13,6 @@ class LineChart extends ImplicitlyAnimatedWidget {
   final LineChartData data;
   
   
-   static void cleanTooltipsList (){
-    if(_showingTouchedTooltips != null && _showingTouchedIndicators !=null)
-  _showingTouchedTooltips.clear();
-  _showingTouchedIndicators.clear();
-  
-  }
 
   /// [data] determines how the [LineChart] should be look like,
   /// when you make any change in the [LineChartData], it updates
